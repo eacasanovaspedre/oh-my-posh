@@ -1,0 +1,194 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+#https://www.nerdfonts.com/font-downloads
+#https://github.com/microsoft/cascadia-code/issues/10
+#https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode
+#      
+# \ue0b0 -> 
+# \ue0b1 -> 
+# \uf0e7 -> 
+# \ue0b6 -> 
+# \uf7db -> 
+
+$schema: https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+blocks:
+  - alignment: left
+    type: prompt
+    segments:
+      - type: os
+        style: diamond
+        template: "{{ if .WSL }}WSL at {{ end }}{{.Icon}} \ue0b1"
+        leading_diamond: "\u256d\u2500\ue0b6"
+        #trailing_diamond: "\ue0b0"
+        background: "#91ddff"
+        foreground: "#000000"
+        properties:
+          #macos: "\uf179"
+          macos: "\ue711"
+          #ubuntu: "\uf31b"
+          ubuntu: "\uf31c"
+          #windows: "\uf871"
+          windows: "\ue70f"
+          alpine: "\uf300"
+          arch: "\uf303"
+          centos: "\uf304"
+          debian: "\uf306"
+          elementary: "\uf309"
+          fedora: "\uf30a"
+          gentoo: "\uf30d"
+          linux: "\ue712"
+          manjaro: "\uf312"
+          mint: "\uf30f"
+          opensuse: "\uf314"
+          raspbian: "\uf315"
+      - type: shell
+        style: diamond
+        trailing_diamond: "\ue0b0"
+        template: " {{ .Name }} "
+        background: "#91ddff"
+        foreground: "#000000"
+      - type: root
+        style: powerline
+        template: " \uf0e7 "
+        background: "#b58900"
+        foreground: "#fff"
+        powerline_symbol: "\ue0b0"
+      - type: session
+        style: powerline
+        template: " {{ .UserName }}@{{ .HostName }} \ufcbe "
+        background: "#D4E157"
+        foreground: "#000000"
+        properties:
+          ssh_icon: 
+        powerline_symbol: "\ue0b0"
+      - type: sysinfo
+        style: diamond
+        template: " \uf85a CPU: {{ round .PhysicalPercentUsed .Precision }}% | "
+        #leading_diamond: "\ue0b0"
+        background: "#516BEB"
+        foreground: "#ffffff"
+      - type: sysinfo
+        style: diamond
+        template: "RAM: {{ (div ((sub .PhysicalTotalMemory .PhysicalFreeMemory)|float64) 1000000000.0) }}/{{ (div .PhysicalTotalMemory 1068786176.0) }}GB \uf85a"
+        trailing_diamond: "\ue0b0"
+        background: "#516BEB"
+        foreground: "#ffffff"
+      - type: path
+        style: powerline
+        template: " \uf74a {{ .Path }} "
+        powerline_symbol: "\ue0b0"
+        background: "#cb4b16"
+        foreground: "#000000"
+        properties:
+          folder_separator_icon: "\u27a7"
+          home_icon: "\uf7db"
+          folder_icon: "\uf115"
+          style: agnoster_full
+          max_depth: 100
+          mapped_locations_enabled: true
+          mixed_threshold: 100
+          hide_root_location: false
+      - type: exit
+        style: diamond
+        templates: 
+          - " {{ if gt .Code 0 }}\u2a2f{{ end }}"
+          - " {{ if eq .Code 0 }}\u2713{{ end }}"
+        properties:
+          always_enabled: true
+        foreground: "#e0f8ff"
+        foreground_templates:
+          - "{{ if gt .Code 0 }}#ef5350{{ end }}"
+          - "{{ if eq .Code 0 }}#05A050{{ end }}"
+        background: "transparent"
+      - type: executiontime
+        style: diamond
+        template: " {{ .FormattedMs }}\u2800"
+        trailing_diamond: "\ue0b0"
+        foreground: "#e0f8ff"
+        background: "transparent"
+        properties:
+          always_enabled: true
+          threshold: 500
+          style: austin
+      - type: "git"
+        style: "powerline"
+        template: " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \uf692 {{ .StashCount }}{{ end }} "
+        background_templates:
+          - "{{ if or (.Working.Changed) (.Staging.Changed) }}#dc322f{{ end }}"
+          - "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#FFA300{{ end }}"
+          - "{{ if gt .Ahead 0 }}#859900{{ end }}"
+          - "{{ if gt .Behind 0 }}#90F090{{ end }}"
+        background: "#05A050"
+        foreground: "#000000"
+        powerline_symbol: "\ue0b0"
+        properties:
+          fetch_stash_count: true
+          fetch_status: true
+          fetch_upstream_icon: true
+  - type: prompt
+    alignment: left
+    newline: true
+    segments:
+      - type: "text"
+        style: plain
+        foreground: "#91ddff"
+        template: "\u2570\u2500"
+  - type: rprompt
+    filler: "*"
+    overflow: break
+    newline: false
+    segments:
+      - type: dotnet
+        style: diamond
+        leading_diamond: "\ue0b6"
+        trailing_diamond: "\ue0b4"
+        background: "#fdf6e3"
+        foreground: "#073642"
+        template: "{{ if .Unsupported }}\uf071{{ else }}.net {{ .Full }}{{ end }}"
+        properties:
+          display_mode: context
+          missing_command_text: "dotnet not present"
+      - type: node
+        style: diamond
+        leading_diamond: "\ue0b6"
+        trailing_diamond: "\ue0b4"
+        background: "#fdf6e3"
+        foreground: "#073642"
+        template: " {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} "
+        properties:
+          home_enabled: false
+          display_mode: context
+          missing_command_text: node.js not present
+          fetch_package_manager: true
+          yarn_icon:  
+          npm_icon:  
+      - type: java
+        style: diamond
+        leading_diamond: "\ue0b6"
+        trailing_diamond: "\ue0b4"
+        background: "#fdf6e3"
+        foreground: "#073642"
+        template: " {{ if .Error }}{{ .Error }}{{ else }}java {{ .Full }}{{ end }} "
+        properties:
+          display_mode: context
+          missing_command_text: java not present
+      - type: kotlin
+        style: diamond
+        leading_diamond: "\ue0b6"
+        trailing_diamond: "\ue0b4"
+        background: "#fdf6e3"
+        foreground: "#073642"
+        template: " {{ if .Error }}{{ .Error }}{{ else }}kotlin {{ .Full }}{{ end }} "
+        properties:
+          display_mode: context
+      - type: time
+        style: diamond
+        leading_diamond: "\ue0b6"
+        trailing_diamond: "\ue0b4"
+        background: "#91ddff"
+        foreground: "#000000"
+        template: "\uf5ef{{ .CurrentDate | date .Format }}\uf64f"
+        properties:
+          time_format: "2006-01-02 15:04:05"
+final_space: true
+version: 2

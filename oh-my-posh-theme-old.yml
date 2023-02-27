@@ -1,0 +1,126 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+#https://www.nerdfonts.com/font-downloads
+#https://github.com/microsoft/cascadia-code/issues/10
+#https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/CascadiaCode
+#      
+
+$schema: https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+blocks:
+- alignment: left
+  segments:
+  - background: "#b58900"
+    foreground: "#fff"
+    leading_diamond: 
+    properties:
+      postfix: ""
+      prefix: ""
+      time_format: "2006-01-02 15:04:05.000"
+    style: diamond
+    trailing_diamond: 
+    type: time
+  - background: "#D4E157"
+    foreground: "#fff"
+    properties:
+      display_host: true
+      postfix: ""
+      prefix: " "
+    style: powerline
+    powerline_symbol: 
+    type: session
+  - background: "#005005"
+    foreground: "#fff"
+    properties:
+      postfix: ""
+      prefix: "  "
+      style: agnoster_full
+    style: diamond
+    leading_diamond: '<transparent, #005005></>'
+    trailing_diamond: 
+    type: path
+  - background: "#9c36b6"
+    foreground: "#fff"
+    properties:
+      branch_icon:  
+      display_branch_status: true
+      branch_identical_icon: ≡
+      branch_ahead_icon: ↑
+      branch_behind_icon: ↓
+      branch_gone_icon: ≢
+      display_status: true
+      display_status_detail: true
+      display_stash_count: true
+      status_separator_icon: "|" 
+      local_working_icon: 
+      local_staged_icon: 
+      stash_count_icon: 
+      commit_icon: 
+      tag_icon: 
+      rebase_icon: 
+      cherry_pick_icon: 
+      revert_icon: 
+      merge_icon: 
+      no_commits_icon: 
+      display_upstream_icon: true
+      github_icon: 
+      gitlab_icon: 
+      bitbucket_icon: 
+      azure_devops_icon: ﴃ
+      git_icon: 
+      status_colors_enabled: true
+      color_background: true
+      branch_max_length: 0
+    style: diamond
+    leading_diamond: '<transparent, #9c36b6></>'
+    trailing_diamond: 
+    type: git
+  type: prompt
+- segments:
+  - background: "#E36464"
+    foreground: "#fff"
+    leading_diamond: 
+    properties:
+      root_icon: 
+    style: diamond
+    trailing_diamond: 
+    type: root
+  - background: "#b5e61d"
+    foreground: "#fff"
+    leading_diamond: "\ue0c5"
+    style: diamond
+    trailing_diamond: "\ue0c4"
+    type: dotnet
+    properties:
+      unsupported_version_icon:   
+      display_version: true
+      display_mode: context
+      missing_command_text: ""
+      prefix: " dotnet "
+  - background: "#b5e61d"
+    foreground: "#fff"
+    leading_diamond: "\ue0c5"
+    properties:
+      display_version: true
+      display_mode: context
+      missing_command_text: ""
+      display_package_manager: true
+      yarn_icon:  
+      npm_icon:  
+    style: diamond
+    trailing_diamond: "\ue0c4"
+    type: node
+  type: rprompt
+- alignment: left
+  newline: true
+  segments:
+  - foreground: "#D4E157"
+    properties:
+      always_enabled: true
+      display_exit_code: false
+      error_color: "#FF5252"
+      prefix: ❯
+    style: plain
+    type: exit
+  type: prompt
+final_space: true
+version: 2

@@ -50,7 +50,7 @@ blocks:
       - type: root
         style: powerline
         template: " \uf0e7 "
-        background: "#b58900"
+        background: "#dc322f"
         foreground: "#fff"
         powerline_symbol: "\ue0b0"
       - type: session
@@ -78,7 +78,7 @@ blocks:
         template: " \uf74a {{ .Path }} "
         powerline_symbol: "\ue0b0"
         background: "#cb4b16"
-        foreground: "#000000"
+        foreground: "#fff"
         properties:
           folder_separator_icon: "\u27a7"
           home_icon: "\uf7db"
@@ -190,5 +190,8 @@ blocks:
         template: "\uf5ef{{ .CurrentDate | date .Format }}\uf64f"
         properties:
           time_format: "2006-01-02 15:04:05"
+transient_prompt:
+  foreground: "#91ddff"
+  template: "\ue0b1 "
 final_space: true
 version: 2

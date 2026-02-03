@@ -193,5 +193,6 @@ blocks:
 transient_prompt:
   foreground: "#91ddff"
   template: "\ue0b1 "
+  rprompt_filler: " "
 final_space: true
 version: 2
